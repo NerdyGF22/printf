@@ -50,10 +50,8 @@ int print_string(va_list types, char buffer[],
 
 	while (str[length] != '\0')
 		length++;
-
 	if (precision >= 0 && precision < length)
 		length = precision;
-
 
 	if (width > length)
 	{
@@ -73,8 +71,6 @@ int print_string(va_list types, char buffer[],
 			return (width);
 		}
 	}
-
-
 	return (write(1, str, length));
 }
 /************************* PRINT PERCENT SIGN *************************/
@@ -126,13 +122,13 @@ int print_int(va_list types, char buffer[],
 
 	buffer[BUFF_SIZE - 1] = '\0';
 	num = (unsigned long int)n;
-	
+
 	if (n < 0)
 	{
 		num = (unsigned long int)((-1) * n);
 		is_negative = 1;
 	}
-	
+
 	while (num > 0)
 	{
 		buffer[i--] = (num % 10) + '0';
@@ -152,13 +148,12 @@ int print_int(va_list types, char buffer[],
  * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
- * @sum: the sum of numbers 
+ * @sum: the sum of numbers
  *
  * Return: Numbers of char printed.
  */
 int print_binary(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
-{
+	int flags, int width, int precision, int size){
 	unsigned int n, m, i, sum;
 	unsigned int a[32];
 	int count;
@@ -180,7 +175,7 @@ int print_binary(va_list types, char buffer[],
 	sum += a[i];
 	if (sum || i == 31)
 	{
-		
+
 		char z = '0' + a[i];
 
 		write(1, &z, 1);
